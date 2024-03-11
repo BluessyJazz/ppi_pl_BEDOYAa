@@ -5,7 +5,7 @@ Proyecto Libre (Freelance) - Programación para Ingeniería Semestre 2024-1
 
 ## Descripción
 
-Este repositorio documenta mi viaje personal hacia convertirme en un freelancer durante el semestre 2024-1 mientras soy estudiante de la Universidad Nacional de Colombia. Aquí compartiré mis experiencias, aprendizajes, recursos útiles y cualquier otro detalle relevante que pueda ayudar a otros que estén interesados en iniciar un camino similar.
+Este repositorio documenta el camino hacia convertirme en un freelancer en IT durante el semestre 2024-1 mientras soy estudiante de la Universidad Nacional de Colombia. Aquí compartiré mis experiencias, aprendizajes, recursos útiles y cualquier otro detalle relevante que pueda ayudar a otros que estén interesados en iniciar un camino similar.
 
 ## Contenido
 
@@ -30,6 +30,10 @@ Aquí encontrarás una lista de recursos que he encontrado útiles en mi camino 
 ## Progreso
 
 En esta sección, detallaré mi progreso durante el semestre 2024-1. Compartiré hitos importantes, proyectos en los que trabajo, lecciones aprendidas y cualquier otro detalle relevante sobre mi viaje como freelancer mientras continúo siendo estudiante en la Universidad Nacional de Colombia.
+
+## Contacto
+Correo electrónico [abedoyaci@unal.edu.co](mailto:abedoyaci@unal.edu.co)
+
 
 ## Contribuciones
 
