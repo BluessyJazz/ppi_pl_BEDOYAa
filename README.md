@@ -10,7 +10,7 @@ Este repositorio documenta el camino hacia convertirme en un freelancer en IT du
 - [Objetivo](https://github.com/BluessyJazz/ppi_pl_BEDOYAa/blob/main/README.md#objetivo)
 - Recursos
 - Progreso
-- [Contribuciones](https://github.com/BluessyJazz/ppi_pl_BEDOYAa/edit/main/README.md#contribuciones)
+- [Contribuciones](https://github.com/BluessyJazz/ppi_pl_BEDOYAa/blob/main/README.md#contribuciones)
 
 ## Introducción
 
