@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript">
+    <!-- Script para la tabla de contenido (no mostrar en la vista previa de GitHub) -->
+    <!-- <script> type="text/javascript">
         function scrollToSection(id) {
             const element = document.getElementById(id);
             element.scrollIntoView({
@@ -18,7 +19,7 @@
                 scrollToSection(this.getAttribute("href").slice(1));
             });
         }
-    </script>
+    </script> -->
 </head>
 <body>
     <header>
