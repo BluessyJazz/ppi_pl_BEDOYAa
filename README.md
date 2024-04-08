@@ -31,10 +31,10 @@ En esta sección, detallaré mi progreso en el área de análisis y manipulació
 
 ## Perfiles en Plataformas
 
-- [**StackOverflow:**](https://stackoverflow.com/users/24114620/anderson-bedoya-ciro)
-- [**UpWork:**](https://www.upwork.com/freelancers/~017adf9fda4a06cf8a)
-- [**Reddit:**](https://www.reddit.com/user/BluessyJazz/)
-- [**LinkedIn:**](https://www.linkedin.com/in/anderson-bedoya-ciro-9abb1724a)
+- [**StackOverflow**](https://stackoverflow.com/users/24114620/anderson-bedoya-ciro)
+- [**UpWork**](https://www.upwork.com/freelancers/~017adf9fda4a06cf8a)
+- [**Reddit**](https://www.reddit.com/user/BluessyJazz/)
+- [**LinkedIn**](https://www.linkedin.com/in/anderson-bedoya-ciro-9abb1724a)
 
 ## Artículo Recomendado
 
