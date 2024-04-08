@@ -29,6 +29,21 @@ Aquí encontrarás una valiosa recopilación de recursos específicamente selecc
 
 En esta sección, detallaré mi progreso en el área de análisis y manipulación de datos. Compartiré hitos importantes, proyectos en los que estoy involucrado, lecciones aprendidas y cualquier otro aspecto relevante de mi viaje como freelancer de datos.
 
+## Perfiles en Plataformas
+
+- **StackOverflow:** [Anderson Bedoya Ciro](https://stackoverflow.com/users/24114620/anderson-bedoya-ciro)
+- **UpWork:** [Perfil de UpWork](https://www.upwork.com/freelancers/~017adf9fda4a06cf8a)
+- **Reddit:** [BluessyJazz](https://www.reddit.com/user/BluessyJazz/)
+- **LinkedIn:** [Anderson Bedoya](https://www.linkedin.com/in/anderson-bedoya-ciro-9abb1724a).
+
+## Artículo Recomendado
+
+Considero que este artículo puede ser interesante y de ayuda para cualquiera que esté iniciando: [Cómo empezar a ser freelancer](https://www.freecodecamp.org/news/how-to-start-freelancing/)
+
+## Nuevo Proyecto
+
+Estoy emocionado de compartir mi primer proyecto, un análisis exploratorio de los datos del desempeño fiscal de los departamentos, cruzándolos con los resultados de las pruebas del ICFES y una estimación de la población, haciendo uso de mapas. Todo el proyecto está en R utilizando RStudio y Quarto. Puedes encontrar más detalles [aquí]([enlace_al_proyecto](https://github.com/BluessyJazz/ppi_pl_BEDOYAa/blob/main/Eficiencia-Desempe%C3%B1o-Fiscal_ICFES_Poblacion.html)).
+
 ## Contacto
 
 ¡Me encantaría saber de ti! Si tienes alguna pregunta, comentario o simplemente quieres conectar, no dudes en enviarme un correo electrónico a [abedoyaci@unal.edu.co](mailto:abedoyaci@unal.edu.co).
