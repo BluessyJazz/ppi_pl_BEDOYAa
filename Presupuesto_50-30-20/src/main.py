@@ -42,14 +42,16 @@ def main():
 
         if submit_button:
 
-            necesidades, deseos, ahorro = calcular_presupuesto(ingresos,
-                                                            gastos_esenciales)
+            necesidades, deseos, ahorro = \
+                calcular_presupuesto(ingresos, gastos_esenciales)
 
-            st.write('Necesidades: ${:,.0f}'.format(necesidades))
-            st.write('Deseos: ${:,.0f}'.format(deseos))
-            st.write('Ahorro: ${:,.0f}'.format(ahorro))
+            st.write(f'Necesidades: ${necesidades:,.0f}')
+            st.write(f'Deseos: ${deseos:,.0f}')
+            st.write(f'Ahorro: ${ahorro:,.0f}')
 
-            plot_budget(necesidades, deseos, ahorro)
+            if ingresos != 0:
+                plot_budget(necesidades, deseos, ahorro)
+          
                                                      
 if __name__ == "__main__":
     main()
