@@ -1,0 +1,214 @@
+---
+title: "Eficiencia en cuanto a desempeños fiscal, resultado del ICFES y población"
+author: "Anderson Bedoya Ciro"
+lang: es
+date: last-modified
+date-format: long
+toc: true
+toc-location: left
+toc-title: Tabla de contenido
+toc-depth: 3
+format: 
+  html:
+    embed-resources: true
+    theme: morph
+execute:
+  echo: false
+  warning: false
+editor: source
+css: estilo.css
+---
+
+```{r}
+rm(list = ls())
+```
+
+```{r}
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+  install.packages("ggplot2")
+}
+if (!requireNamespace("tidyverse", quietly = TRUE)) {
+  install.packages("tidyverse")
+}
+if (!requireNamespace("sf", quietly = TRUE)) {
+  install.packages("sf")
+}
+if (!requireNamespace("kableExtra", quietly = TRUE)) {
+  install.packages("kableExtra")
+}
+# Cargar las bibliotecas después de instalarlas
+library(ggplot2)
+library(tidyverse)
+library(sf)
+library(kableExtra)
+```
+
+# Contexto
+
+El presente trabajo, titulado "Eficiencia en cuanto a desempeños fiscal, resultado del ICFES y población," aborda un análisis exhaustivo de diversos indicadores clave relacionados con los departamentos de Colombia. El objetivo principal es explorar las interconexiones entre el desempeño fiscal de los departamentos, los resultados obtenidos en las pruebas del ICFES, y la composición demográfica de la población.
+
+```{r}
+# Cargar las bases de datos.
+load("datos/deptos_total_2024.RData")
+load("datos/desem_fiscal.RData")
+load("datos/icfes202202_resumido.RData")
+```
+
+```{r}
+# Lectura de mapa de departamentos de Colombia
+dept_col_sf <- read_sf("mapa_depto/MGN_DPTO_POLITICO.shp")
+```
+
+## Croquis de los departamentos de Colombia
+
+Se muestra el croquis del mapa de los departamentos de colombia que se va a usar para el análisis.
+
+```{r echo = FALSE}
+# Croquis de los departamentos en el mapa
+
+plot(st_geometry(dept_col_sf))
+```
+
+El croquis anterior muestra los departamentos de Colombia.
+
+```{r}
+# Unión de los datos del mapa con el número de habitantes esperado.
+dept_col_sf <- dept_col_sf |> 
+  left_join(deptos_total_2024, 
+            by = join_by(DPTO_CCDGO == DP))
+```
+
+```{r}
+# Unión de los resultados del ICFES por departamento
+dept_col_sf$DPTO_CCDGO = as.numeric(dept_col_sf$DPTO_CCDGO)
+dept_col_sf <- dept_col_sf |> 
+  left_join(icfes202202_resumido,
+            by = join_by(DPTO_CCDGO == ESTU_COD_RESIDE_DEPTO))
+```
+
+```{r}
+# Unión del desempeño fiscal por departamento.
+desem_fiscal$`Código Departamento` = 
+  as.numeric(desem_fiscal$`Código Departamento`)
+dept_col_sf <- dept_col_sf |> 
+  left_join(desem_fiscal, 
+            by = join_by("DPTO_CCDGO" == "Código Departamento"))
+```
+
+```{r}
+# Cálculo de relaciones y variables. 
+dept_col_sf <- dept_col_sf |> 
+  mutate(porcentaje_colegio_mixto = genero_mix / num_pres,
+         porcentaje_colegio_unico = genero_unico / num_pres,
+         cobertura_icfes = num_pres / `Total_15-19`,
+         indice_eficiencia_col_mix = 
+           (prom_calif_resultados * punt_prom * porcentaje_colegio_mixto) / `Total_15-19`,
+         indice_eficiencia_col_unico = 
+           (prom_calif_resultados * punt_prom * porcentaje_colegio_unico) / 
+           `Total_15-19`,
+         log_indice_eficiencia_col_mix = log10(indice_eficiencia_col_mix),
+         log_indice_eficiencia_col_unico = log10(indice_eficiencia_col_unico))
+```
+
+## Relación del tipo de colegio y los resultados del ICFES.
+
+A continuación se meustra la relación que se tiene entre el puntaje promedio del ICFES por departamento y el porcentaje de colegios mixtos en cada departamento.
+
+```{r}
+ggplot(dept_col_sf, aes(porcentaje_colegio_mixto , punt_prom)) +
+  geom_point() +
+  geom_smooth(se = FALSE) +
+  scale_x_continuous(labels = scales::percent)
+
+```
+
+Como podemos ver en el gráfico anterior hay una leve tendencia a que los departamentos con mayor porcentaje de colegios mixtos tengan un menor puntaje promedio en el ICFES. Sin embargo, esta relación no es muy fuerte.
+
+## Resultados de la calificación fiscal y los resultados del ICFES.
+
+A continuación se muestra la relación que se tiene entre el puntaje promedio del ICFES por departamento y el resultado de la calificación fiscal con el indicador "Promedio Calificación Resultados" de cada departamento.
+
+```{r}
+ggplot(dept_col_sf, aes(prom_calif_resultados, punt_prom)) +
+  geom_point() +
+  geom_smooth(se = FALSE) +
+  labs(x = "Promedio Calificación Resultados",
+       y = "Puntaje Promedio ICFES") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+Como se puede observar hay una leve relación entre el puntaje promedio del ICFES y el resultado de la calificación fiscal de forma positiva. Sin embargo esta esta condicionada por la presencia de dos departamentos que tienen un puntaje promedio del ICFES muy bajo y muy alto (valores extremos en el gráfico anterior). Por lo tanto, se procede a eliminar estos dos departamentos para ver si la relación se hace más fuerte o más débil. Estos dos departamentos son Bogotá y Guainía.
+
+```{r}
+dept_col_sf_sin_extremos <- dept_col_sf|>
+  filter(Departamento!="GUAINIA"&Departamento!="BOGOTA")
+
+
+ggplot(dept_col_sf_sin_extremos, aes(prom_calif_resultados, punt_prom)) +
+  geom_point() +
+  geom_smooth(se = FALSE) +
+  labs(x = "Promedio Calificación Resultados",
+       y = "Puntaje Promedio ICFES") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+Cuando no se tienen en cuenta los departamentos de Bogotá y Guainía, la relación entre el puntaje promedio del ICFES y el resultado de la calificación fiscal se hace más débil, aunque sigue siendo positiva.
+
+## Mapa de distribución del puntaje del ICFES por municipio.
+
+El siguiente grafico muestra la distribución del puntaje promedio del ICFES por municipio.
+
+```{r}
+ggplot(dept_col_sf) +
+  geom_sf(aes(fill = punt_prom)) + 
+  scale_fill_gradient(low = "white", high = "red") +
+  labs(title = "Puntaje promedio del ICFES por departamento",
+       fill = "Puntaje promedio")
+
+```
+
+En el mapa se observa que el departamento con el puntaje promedio más alto es Bogotá, seguido de Boyacá, siendo Chocó el departamento con el puntaje promedio más bajo.
+
+## Distribución del índice de eficiencia.
+
+```{r}
+
+ggplot(dept_col_sf) +
+  geom_sf(aes(fill = log_indice_eficiencia_col_mix)) +
+  scale_fill_gradient(low = "white", high = "red") + 
+  labs(title = "Indice de eficiencia por departamentos",
+       fill = "Índice de eficiencia")
+
+
+```
+
+En logaritmo se puede notar aquí el indice de eficiencia de los departamentos graficados con el Promedio de Calificación de Resultados, el Puntaje Promedio del ICFES y el porcentaje de colegios mixtos.
+
+## Listado de los departamentos con más alto índice de eficiencia.
+
+```{r}
+dept_col_sf |> 
+  select(Departamento, punt_prom, `prom_calif_resultados`,
+         porcentaje_colegio_mixto, `Total_15-19`,
+         log_indice_eficiencia_col_mix) |> 
+  st_drop_geometry() |> 
+  arrange(desc(log_indice_eficiencia_col_mix)) |> 
+  slice(1:20) |> 
+  kable(digits = 2)
+
+
+```
+
+Aquí se puede notar que los departamentos con mayor índice de eficiencia son los departamentos de San Andrés, Vaupés, Guaviare y Amazonas.
+
+# Conclusiones
+
+Como se ha podido evidenciar hay una relación entre el puntaje promedio del ICFES y el resultado de la calificación fiscal de forma positiva. Sin embargo, esta relación no es muy fuerte. Por otro lado, se puede observar que los departamentos con mayor índice de eficiencia son los departamentos de San Andrés, Vaupés, Guaviare y Amazonas. Estos indicadores pueden ser útiles para que el gobierno pueda tomar decisiones sobre la distribución de recursos para la educación en los diferentes departamentos.
+
+# Referencias
+
+Instituto Colombiano para la Evaluación de la Educación - Icfes. (marzo de 2024). DataIcfes: Repositorio de Datos Abiertos del Icfes. 04.Saber11 \[Conjunto de datos\]. Recuperado de <https://www.icfes.gov.co/data-icfes>
+
+Centro de datos geoespaciales - CSCD (marzo de 2024). Departamento Político de Colombia \[Datos geoespaciales\]. Recuperado de <https://csdc.immap.org/layers/geonode:MGN_DPTO_POLITICO>
+
+Departamento Administrativo Nacional de Estadística - DANE (s.f.). Proyecciones de Población. Recuperado de <https://www.dane.gov.co/index.php/estadisticas-por-tema/demografia-y-poblacion/proyecciones-de-poblacion>
