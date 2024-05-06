@@ -71,14 +71,51 @@ def main():
             necesidades, deseos, ahorro = \
                 calcular_presupuesto(ingresos, gastos_esenciales)
 
-            st.write(f'Gastos necesarios: ${necesidades:,.0f}')
-            st.write(f'Gastos prescindibles: ${deseos:,.0f}')
-            st.write(f'Ahorro: ${ahorro:,.0f}')
+            # Mostrar presupuesto en 3 columnas con su explicación
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.write('Gastos esenciales')
+                st.write(f'💰 ${necesidades:,.0f}')
+            with col2:
+                st.write('Gastos prescindibles')
+                st.write(f'💸 ${deseos:,.0f}')
+            with col3:
+                st.write('Ahorro e inversión')
+                st.write(f'🏦 ${ahorro:,.0f}')
 
+            # Visualizar presupuesto
             plot_budget(necesidades, deseos, ahorro)
 
         elif submit_button and ingresos == 0:
             st.warning('Ingresa un valor válido para los ingresos')
+
+    # Mostrar información adicional
+    st.markdown('---')
+    st.markdown('## Cómo funciona el presupuesto 50-30-20')
+    st.write('El presupuesto 50-30-20 es un método simple para distribuir tu \
+             dinero en tres categorías principales: gastos esenciales, gastos \
+             prescindibles y ahorro e inversión. Aquí tienes una descripción \
+             de cada categoría:')
+    st.markdown('### Gastos esenciales 💰')
+    st.write('Los gastos esenciales son aquellos que son necesarios para \
+             mantener tu vida y tu trabajo. Esto incluye alimentos, vivienda, \
+             transporte, servicios públicos, seguros y otros gastos básicos.')
+    st.markdown('### Gastos prescindibles 💸')
+    st.write('Los gastos prescindibles son aquellos que no son esenciales, \
+             pero que mejoran tu calidad de vida. Esto incluye \
+             entretenimiento, comidas fuera de casa, ropa, viajes y otros \
+             gastos discrecionales.')
+    st.markdown('### Ahorro e inversión 🏦')
+    st.write('El ahorro e inversión es el dinero que guardas para el futuro. \
+             Esto incluye ahorros de emergencia, ahorros a largo plazo, \
+             contribuciones a la jubilación y otras inversiones.')
+    st.markdown('## Otras formas de presupuestar')
+    st.write('Además del presupuesto 50-30-20, hay otras formas de \
+             presupuestar tu dinero. Algunas personas prefieren el método \
+             70-20-10, que destina el 70% a gastos esenciales, el 20% a \
+             gastos prescindibles y el 10% a ahorro e inversión. También \
+             puedes personalizar tu presupuesto según tus necesidades y \
+             objetivos financieros.')
 
 
 if __name__ == "__main__":
