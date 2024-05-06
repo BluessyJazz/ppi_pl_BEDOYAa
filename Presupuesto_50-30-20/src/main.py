@@ -16,6 +16,13 @@ import streamlit as st
 from budget_manager import calcular_presupuesto
 from visualization import plot_budget
 
+# Configurar la página
+st.set_page_config(page_title='Presupuesto 50-30-20',
+                   page_icon='💰',
+                   layout='centered',
+                   initial_sidebar_state='auto'
+                   )
+
 
 def main():
     """
@@ -64,13 +71,13 @@ def main():
             necesidades, deseos, ahorro = \
                 calcular_presupuesto(ingresos, gastos_esenciales)
 
-            st.write(f'Necesidades: ${necesidades:,.0f}')
-            st.write(f'Deseos: ${deseos:,.0f}')
+            st.write(f'Gastos necesarios: ${necesidades:,.0f}')
+            st.write(f'Gastos prescindibles: ${deseos:,.0f}')
             st.write(f'Ahorro: ${ahorro:,.0f}')
 
             plot_budget(necesidades, deseos, ahorro)
 
-        else:
+        elif submit_button and ingresos == 0:
             st.warning('Ingresa un valor válido para los ingresos')
 
 
