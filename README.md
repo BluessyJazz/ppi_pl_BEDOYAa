@@ -9,9 +9,8 @@
 - [Introducción](#introducción)
 - [Objetivo](#objetivo)
 - [Recursos](#recursos)
-- [Progreso](#progreso)
+- [Proyectos](#proyectos)
 - [Contacto](#contacto)
-- [Contribuciones](#contribuciones)
 
 ## Introducción
 
@@ -23,34 +22,17 @@ Mi principal objetivo es compartir mi trayectoria y conocimientos mientras naveg
 
 ## Recursos
 
-Aquí encontrarás una valiosa recopilación de recursos específicamente seleccionados para el análisis y manipulación de datos, que han sido fundamentales en mi camino hacia convertirme en freelancer en este campo. Desde libros y cursos en línea hasta herramientas especializadas y comunidades virtuales centradas en datos, esta sección está diseñada para proporcionarte las herramientas necesarias para tu propio éxito en el mundo del freelancing de datos.
-
-## Progreso
-
-En esta sección, detallaré mi progreso en el área de análisis y manipulación de datos. Compartiré hitos importantes, proyectos en los que estoy involucrado, lecciones aprendidas y cualquier otro aspecto relevante de mi viaje como freelancer de datos.
-
-## Perfiles en Plataformas
-
-- [**StackOverflow**](https://stackoverflow.com/users/24114620/anderson-bedoya-ciro)
-- [**UpWork**](https://www.upwork.com/freelancers/~017adf9fda4a06cf8a)
-- [**Reddit**](https://www.reddit.com/user/BluessyJazz/)
-- [**LinkedIn**](https://www.linkedin.com/in/anderson-bedoya-ciro-9abb1724a)
-
-## Artículo Recomendado
-
 Considero que este artículo puede ser interesante y de ayuda para cualquiera que esté iniciando: [Cómo empezar a ser freelancer](https://www.freecodecamp.org/news/how-to-start-freelancing/)
 
-## Nuevo Proyecto
+## Proyectos
 
-Estoy emocionado de compartir mi primer proyecto, un análisis exploratorio de los datos del desempeño fiscal de los departamentos, cruzándolos con los resultados de las pruebas del ICFES y una estimación de la población, haciendo uso de mapas. Todo el proyecto está en R utilizando RStudio y Quarto. Puedes encontrar más detalles [aquí](https://github.com/BluessyJazz/ppi_pl_BEDOYAa/blob/main/Eficiencia-Desempe%C3%B1o-Fiscal_ICFES_Poblacion.html).
+- Análisis exploratorio de los datos del desempeño fiscal de los departamentos, cruzándolos con los resultados de las pruebas del ICFES y una estimación de la población, haciendo uso de mapas. Todo el proyecto está en R utilizando RStudio y Quarto. Puedes encontrar más detalles [aquí](https://bluessyjazz.github.io/analisis_datos_ICFES/). Repositorio [aquí](https://github.com/BluessyJazz/analisis_datos_ICFES/tree/main).
+
+- Presupuesto 50-30-20: Aplicación de gestión de presupuesto 50-30-20, una herramienta sencilla y efectiva para planificar tus finanzas personales cada mes. La aplicación está disponible [aquí](https://presupuesto503020.streamlit.app/). Repositorio [aquí](https://github.com/BluessyJazz/presupuesto_50-30-20/tree/main).
 
 ## Contacto
 
-¡Me encantaría saber de ti! Si tienes alguna pregunta, comentario o simplemente quieres conectar, no dudes en enviarme un correo electrónico a [abedoyaci@unal.edu.co](mailto:abedoyaci@unal.edu.co).
-
-## Contribuciones
-
-Aunque este proyecto es principalmente personal, siempre estoy abierto a sugerencias, correcciones o colaboraciones. Si encuentras algún error en la documentación o tienes ideas para mejorarla, ¡no dudes en abrir un issue o enviar un pull request! Tu contribución es valiosa y apreciada.
+Si tienes alguna pregunta, comentario o simplemente quieres conectar, no dudes en enviarme un correo electrónico a [abedoyaci@unal.edu.co](mailto:abedoyaci@unal.edu.co). O puedes contactarme a tráves del resto de mis redes sociales.
 
 <p>
   <a href="https://www.linkedin.com/in/anderson-bedoya-ciro-9abb1724a"><img src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" alt="LinkedIn" width="50" style="margin-right: 20px;"></a>
